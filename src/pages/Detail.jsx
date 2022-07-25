@@ -31,10 +31,11 @@ export default function Detail() {
 
   const handleFav = (query)=>{
     let newArr = []
+    let found = 0
     if(fav){
       newArr = [...fav]
+      found = fav.indexOf(query)
     }
-    let found = fav.indexOf(query)
     if(found === -1){
       newArr.push(query)
       setToggleFav("-")
