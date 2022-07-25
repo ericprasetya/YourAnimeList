@@ -12,26 +12,28 @@ export default function Favorites(){
   const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')))
   const {loading, error, data} = useQuery(FAVORITE_ANIME, {
     variables: {
+      ids : fav,
       page : 1,
-      perPage : 100,
-      id_in : fav
+      perPage : 100
     }
   })
+
+  if(loading) return <p>Loading...</p>
+  if(!loading) console.log(data)
+
   const StyledTitle = styled.h1`
     font-size: 12px;
     text-align: center;
     margin-bottom: 1rem;
   `
 
-  console.log(fav)
-  // console.log(error)
-  console.log(data)
   const StyledButton = styled(Button)`
     font-size: 8px;
     padding : 4px;
   `
   return <div>
   <Navigation />
+  <h3 className="text-center" id="title">Your Favorites</h3>
   <Container className="d-flex flex-wrap justify-content-around py-4">{data.Page.media.map((anime, i)=>{
   return <AnimeCard key={anime.id}>
     <CardImage src={anime.coverImage.large}/>

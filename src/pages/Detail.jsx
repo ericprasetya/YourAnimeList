@@ -55,8 +55,8 @@ export default function Detail() {
             </h4>
             {data.Media.title.english}
           </Card.Header>
-          <Card.Body className='row mx-0 px-0'>
-            <div className='col d-flex justify-content-around p-2'>
+          <Card.Body className='mx-0 px-2'>
+            <div className='d-flex justify-content-around p-2'>
               <Card.Img style={{ width: 'auto', height: '350px' }} src={data.Media.coverImage.large}  />
               <div className='ms-3 text-end'>
                 <h5 className='mb-0'>Score</h5>
@@ -71,7 +71,24 @@ export default function Detail() {
 
               </div>
             </div>
+            <div className="row text-center my-2 ">
+              <div className='col'>
+                {data.Media.seasonYear}
+              </div>
+              <div className='col'>
+                {data.Media.status}
+              </div>
+              <div className='col'>
+                {data.Media.duration} min
+              </div>
+            </div>
+            <div className='col text-center my-2 fst-italic text-primary' style={{  }}>
+              {data.Media.genres.map(genre => {
+                return genre + '  '
+              })}
+            </div>
             <div className='col'>
+              <h6 className="text-center">Description</h6>
               <Card.Text>
                 {parse(data.Media.description)}
               </Card.Text>

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client/react"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { ALL_ANIME } from "../lib/queries/AllAnime"
 import Container from "react-bootstrap/Container"
@@ -12,7 +12,6 @@ import styled from '@emotion/styled'
 export default function Home(){
   const { search } = window.location;
   const query = new URLSearchParams(search).get('search');
-  // console.log(query)
   const {loading, error, data} = useQuery(ALL_ANIME, {
     variables: {
       page: 1,
@@ -20,6 +19,13 @@ export default function Home(){
       search: query
     }
   })
+
+  const [title, setTitle] = useState("All Anime")
+  useEffect(() => {
+    if(query){
+      setTitle(`Search result for: ${query}`)
+    }
+  }, [])
 
   if(loading) return <p>Loading...</p>
   if(!loading) console.log(data)
@@ -37,7 +43,9 @@ export default function Home(){
 
   return <div>
     <Navigation />
-    <Container className="d-flex flex-wrap justify-content-around py-4">{data.Page.media.map((anime, i)=>{
+    <h3 className="text-center" id="title">{title}</h3>
+    <Container className="d-flex flex-wrap justify-content-around py-4">
+      {data.Page.media.map((anime, i)=>{
     return <AnimeCard key={anime.id}>
       <CardImage src={anime.coverImage.large}/>
       <CardBody>
