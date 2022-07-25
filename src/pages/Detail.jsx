@@ -71,7 +71,7 @@ export default function Detail() {
 
                 <h5 className='mt-2 mb-0'>Studio</h5>
                 <p>{data.Media.studios.nodes[0].name}</p>
-                <button className={isFav? 'btn btn-outline-danger' : 'btn btn-danger'} onClick={()=>handleFav(data.Media.id)} >{toggleFav}</button>
+                <button className={isFav? 'btn btn-outline-danger' : 'btn btn-danger'} onClick={()=>handleFav(data.Media.id)} >{toggleFav}Fav</button>
 
               </div>
             </div>
