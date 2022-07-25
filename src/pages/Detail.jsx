@@ -23,7 +23,7 @@ export default function Detail() {
       setFav(FAV);
     }
   }, [])
-  const isFav = (fav.indexOf(parseInt(id)) !== -1)
+  const isFav = (id && fav && fav.indexOf(parseInt(id)) !== -1)
   const [toggleFav, setToggleFav] = useState(isFav? "-" : "+")
 
   if(loading) return <p>Loading...</p>
