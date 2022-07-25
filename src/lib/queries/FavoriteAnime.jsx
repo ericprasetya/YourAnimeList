@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const ALL_ANIME = gql`query AllAnime($page:Int, $perPage: Int, $search: String){
+export const FAVORITE_ANIME = gql`query FavoriteAnime($page:Int, $perPage: Int, $ids: [Int]){
   Page(page:$page, perPage: $perPage) {
-    media(type:ANIME, sort: TRENDING_DESC, search: $search) {
+    media(id_in: $ids) {
       id
       title{
         romaji

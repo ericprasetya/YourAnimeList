@@ -7,6 +7,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Favorites from './pages/Favorites';
 
 export default function App(){
   const Button = styled.button`
@@ -33,6 +34,7 @@ export default function App(){
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Detail />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>

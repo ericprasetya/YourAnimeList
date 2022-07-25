@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 export default function AnimeCard({children, ...attr}) {
   const StyledCard = styled(Card)`
-    width: 18rem;
+    width: 11rem;
     transition: box-shadow .2s;
     &:hover {
       box-shadow: 0 0 10px 2px #888888; 
@@ -22,7 +22,7 @@ export function CardImage({src, ...attr}){
 }
 
 export function CardBody({children}){
-  return <Card.Body>
+  return <Card.Body className="d-flex flex-column justify-content-center align-content-center p-2">
     {children}
   </Card.Body>
 }
