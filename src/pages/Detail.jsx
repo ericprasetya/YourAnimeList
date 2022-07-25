@@ -30,7 +30,10 @@ export default function Detail() {
   if(error) return <p>Error</p>
 
   const handleFav = (query)=>{
-    let newArr = [...fav]
+    let newArr = []
+    if(fav){
+      newArr = [...fav]
+    }
     let found = fav.indexOf(query)
     if(found === -1){
       newArr.push(query)

@@ -10,6 +10,7 @@ import { FAVORITE_ANIME } from "../lib/queries/FavoriteAnime"
 
 export default function Favorites(){
   const [fav, setFav] = useState(JSON.parse(localStorage.getItem('fav')))
+
   const {loading, error, data} = useQuery(FAVORITE_ANIME, {
     variables: {
       ids : fav,
